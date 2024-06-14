@@ -13,16 +13,20 @@
     </thead>
     <tbody>
         <?php foreach ($consultas as $consulta): ?>
-        <tr id="row-<?= $consulta['id'] ?>">
+        <tr id="row-<?= htmlspecialchars($consulta['id']) ?>">
             <td><?= htmlspecialchars($consulta['id']) ?></td>
             <td><?= htmlspecialchars($consulta['paciente_nome']) ?></td>
             <td><?= htmlspecialchars($consulta['medico_nome']) ?></td>
             <td><?= htmlspecialchars($consulta['data']) ?></td>
             <td><?= htmlspecialchars($consulta['sintomas']) ?></td>
             <td>
-                <?php foreach ($consulta['medicamentos'] as $medicamento): ?>
-                    <?= htmlspecialchars($medicamento) ?><br>
-                <?php endforeach; ?>
+                <?php if (is_array($consulta['medicamentos'])): ?>
+                    <?php foreach ($consulta['medicamentos'] as $medicamento): ?>
+                        <?= htmlspecialchars($medicamento) ?><br>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <?= htmlspecialchars($consulta['medicamentos']) ?>
+                <?php endif; ?>
             </td>
         </tr>
         <?php endforeach; ?>

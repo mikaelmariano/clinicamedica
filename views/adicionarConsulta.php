@@ -5,7 +5,7 @@
         <label for="agendamento_id">Agendamento:</label>
         <select class="form-control" id="agendamento_id" name="agendamento_id" required>
             <?php foreach ($agendamentos as $agendamento): ?>
-                <option value="<?= $agendamento['id'] ?>">
+                <option value="<?= htmlspecialchars($agendamento['id']) ?>">
                     <?= htmlspecialchars($agendamento['paciente_nome'] ?? '') ?> - 
                     <?= htmlspecialchars($agendamento['medico_nome'] ?? '') ?> 
                     (<?= htmlspecialchars($agendamento['data'] ?? '') ?>)
@@ -21,7 +21,7 @@
         <label for="medicamentos">Medicamentos:</label>
         <select class="form-control" id="medicamentos" name="medicamentos[]" multiple required>
             <?php foreach ($medicamentos as $medicamento): ?>
-                <option value="<?= $medicamento['id'] ?>"><?= htmlspecialchars($medicamento['nome']) ?></option>
+                <option value="<?= htmlspecialchars($medicamento['id']) ?>"><?= htmlspecialchars($medicamento['nome']) ?></option>
             <?php endforeach; ?>
         </select>
     </div>
